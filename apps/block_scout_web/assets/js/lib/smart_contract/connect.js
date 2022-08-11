@@ -48,7 +48,7 @@ export const walletEnabled = () => {
     if (window.web3 && window.web3.currentProvider && window.web3.currentProvider.wc) {
       resolve(true)
     } else {
-      if (window.ethereum) {
+      if (window.ethereum && window.ethereum._metamask && window.ethereum._metamask.isUnlocked) {
         window.web3 = new Web3(window.ethereum)
         window.ethereum._metamask.isUnlocked()
           .then(isUnlocked => {
